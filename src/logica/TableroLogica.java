@@ -88,11 +88,16 @@ public class TableroLogica {
           
       }
       
-      void ColocarRango9Malos(){
+    void ColocarRango9Malos(){
       
           int c= rand.nextInt(10);
           int f= 3;
           if(malos.contains("Galactus")){
+              return;
+          
+          }
+          else{
+              
             if(fichas[f][c]==null){
                 fichas[f][c]=new Rango9("malo");
                 malos.add("Galactus");
@@ -104,19 +109,70 @@ public class TableroLogica {
 
             }
           }
+          
       }
       
-        void ColocarRango9Buenas(){
-      
+    void ColocarRango9Buenos(){  
           int c= rand.nextInt(10);
           int f= 6;
-          if
-          if(fichas[f][c]==null){
-              fichas[f][c]=new Rango9("bueno");
+          if(buenos.contains("Captain America")){
+          
+              return;
+          
           }
-          else
-        }
-   
+          else{
+          
+              if(fichas[f][c]==null){
+                  fichas[f][c]=new Rango9("bueno");
+                  buenos.add("Captain America");
+              }
+             else{
+                  ColocarRango9Buenos();
+              
+              }
+          }
+          
+    }
+    
+    void ColocarRango10Buenos(){  
+          int c= rand.nextInt(10);
+          int f= 6;
+          if(buenos.contains("Mr. Fantastic")){
+              return;
+          }
+          else{
+              if(fichas[f][c]==null){
+                  fichas[f][c]=new Rango10("bueno");
+                  buenos.add("Mr. Fantastic");
+              }
+             else{
+                  ColocarRango10Buenos();          
+              }
+          }
+          
+    }
+    
+    void ColocarRango10Malos(){
+          int c= rand.nextInt(10);
+          int f= 3;
+          if(malos.contains("Dr. Doom")){
+              return;
+          }
+          else{
+            if(fichas[f][c]==null){
+                fichas[f][c]=new Rango9("malo");
+                malos.add("Dr. Doom");
+            }
+            else{
+               ColocarRango9Malos(); 
+            }
+          }
+          
+      }
+    
+    
+    
+    
     public int ContarElementos(String elemento , ArrayList<String> a){
          int contador=0;
          for(String e: a){

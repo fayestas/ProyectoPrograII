@@ -11,8 +11,8 @@ package logica;
  */
 public class Rango10 extends Ficha {
 
-    public Rango10(int r, String t) {
-        super(r, t,(t.equals("malo")?"Dr. Doom":"Mr. Fantastic"));
+    public Rango10( String t) {
+        super(10, t,(t.equals("malo")?"Dr. Doom":"Mr. Fantastic"));
     }
     
 }
