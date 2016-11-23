@@ -69,7 +69,7 @@ public class TableroLogica {
        } 
    }
    
-      void ColocarBombasRestantesBuenos(){
+    void ColocarBombasRestantesBuenos(){
        //buenos
        int c= rand.nextInt(10);
        int f= rand.nextInt(2)+8;
@@ -82,11 +82,61 @@ public class TableroLogica {
    }
       
       
-      void ColocarRangosMayores(){
+    void ColocarRangosMayores(){
           
+          ColocarRango9Malos();
+          ColocarRango9Buenos();
+          ColocarRango10Malos();
+          ColocarRango10Buenos();
           
-          
-      }
+     }
+    
+    
+    void ColocarRestantes(){
+        
+       
+    
+    
+    }
+    
+    
+    void ColocarRestantesBuenos(){
+    
+        
+    
+    
+    }
+    
+    
+    void ColocarRestantesMalos(){
+        
+        for(int f=0;f<4;f++){
+        
+            for(int c=0;c<10;c++){
+            
+                if(fichas[f][c]==null){
+                
+                    int opc=rand.nextInt(4);
+                    
+                    switch(opc){
+                    
+                        case 0:
+                        break;
+               
+                        case 1:
+                        break;
+                    
+                        case 2:
+                    
+                    }
+                
+                
+                }
+            
+            }
+        
+        }
+    }
       
     void ColocarRango9Malos(){
       
