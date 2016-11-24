@@ -5,20 +5,37 @@
  */
 package proyecto;
 
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jorge A. Santos
  */
-public class CrearPlayer extends javax.swing.JFrame {
 
+public class CrearPlayer extends javax.swing.JFrame {
+    public String usuario;
+    public String pass;
     /**
      * Creates new form CrearPlayer
      */
     public CrearPlayer() {
         initComponents();
         this.setLocationRelativeTo(null);
+        usuario=jTextField1.getText();
+        pass=jPasswordField1.getText();
+        
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +70,7 @@ public class CrearPlayer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(10, 240, 70, 27);
+        jButton1.setBounds(10, 240, 70, 28);
 
         jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 3, 12)); // NOI18N
         jLabel2.setText("New User");
@@ -67,6 +84,11 @@ public class CrearPlayer extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(70, 140, 130, 30);
 
@@ -85,7 +107,7 @@ public class CrearPlayer extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(110, 240, 65, 27);
+        jButton2.setBounds(110, 240, 67, 28);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.1.2.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -106,8 +128,23 @@ public class CrearPlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      Usuarios us=new Usuarios();
+     try{
+         us.addPlayer();
+     }catch(NullPointerException e) {
+         JOptionPane.showMessageDialog(null,"Se ha generado un error al intentar crear el usuario");
+     }
+      MenuPrincipal pl= new MenuPrincipal();
+      MenuInicial mi= new MenuInicial();
+      this.dispose();
+      mi.dispose();
+      pl.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,7 +188,7 @@ public class CrearPlayer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JPasswordField jPasswordField1;
+    public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

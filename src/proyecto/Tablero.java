@@ -591,14 +591,19 @@ public class Tablero extends javax.swing.JFrame {
         getContentPane().add(jButton101);
         jButton101.setBounds(696, 680, 70, 70);
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jLabel2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jLabel2KeyPressed(evt);
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(800, 470, 60, 60);
+        jLabel2.setBounds(800, 680, 70, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper-Stratego.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -616,11 +621,15 @@ public class Tablero extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
-        // TODO add your handling code here:
+
         MenuPrincipal  mp = new MenuPrincipal();
         mp.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel2KeyPressed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
