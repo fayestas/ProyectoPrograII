@@ -11,8 +11,8 @@ package logica;
  */
 public class Rango5 extends Ficha {
 
-    public Rango5(int r, String t,String n) {
-        super(r, t,n);
+    public Rango5( String t,String n) {
+        super(5, t,n);
     }
     
 }
