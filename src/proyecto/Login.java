@@ -5,20 +5,41 @@
  */
 package proyecto;
 
+import java.util.InputMismatchException;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jorge A. Santos
  */
 public class Login extends javax.swing.JFrame {
-
+    String user;
     /**
      * Creates new form Login
      */
     public Login() {
+       
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    public JPasswordField getjPasswordField1() {
+        return jPasswordField1;
+    }
+
+    public JTextField getTxtUser() {
+        return txtUser;
+    }
+
+    public String getUser() {
+        return user;
+    }
+    
+    
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,13 +100,18 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 190, 80, 18);
 
-        jTextField1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(80, 140, 130, 30);
+        txtUser.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
+        txtUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtUser);
+        txtUser.setBounds(80, 140, 130, 30);
 
         jPasswordField1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jPasswordField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jPasswordField1);
         jPasswordField1.setBounds(80, 190, 130, 30);
 
@@ -108,16 +134,27 @@ public class Login extends javax.swing.JFrame {
           //m.btnCrear.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+       Player us = new Player();
+        try{
+             us.login();
+         } catch (InputMismatchException e){
+            JOptionPane.showMessageDialog(null,"Ingrese unicamente texto");
+         }
+        
         MenuPrincipal mp = new MenuPrincipal();
         MenuInicial mn = new MenuInicial();
-        mp.setVisible(true);
         this.dispose();
         mn.dispose();
+         mp.setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +199,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

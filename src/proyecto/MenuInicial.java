@@ -97,7 +97,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
-        CrearPlayer p = new CrearPlayer();
+        CrearPlayer p = new CrearPlayer("Crear");
         p.setVisible(true);
     }//GEN-LAST:event_btnCrearActionPerformed
 

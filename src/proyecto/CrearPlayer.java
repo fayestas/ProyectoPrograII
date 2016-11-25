@@ -20,11 +20,13 @@ public class CrearPlayer extends javax.swing.JFrame {
     /**
      * Creates new form CrearPlayer
      */
-    public CrearPlayer() {
+    public CrearPlayer(String user) {
+        this.usuario=user;
+        user=jTextField1.getText();
+       // this.pass=pass;
+        //pass=jPasswordField1.getText();
         initComponents();
-        this.setLocationRelativeTo(null);
-        usuario=jTextField1.getText();
-        pass=jPasswordField1.getText();
+        this.setLocationRelativeTo(null);  
         
     }
 
@@ -128,7 +130,7 @@ public class CrearPlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      Usuarios us=new Usuarios();
+      Player us=new Player();
      try{
          us.addPlayer();
      }catch(NullPointerException e) {
@@ -176,7 +178,7 @@ public class CrearPlayer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearPlayer().setVisible(true);
+                new CrearPlayer("").setVisible(true);
             }
         });
     }
