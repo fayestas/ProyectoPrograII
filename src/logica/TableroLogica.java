@@ -13,13 +13,36 @@ package logica;
 import java.util.ArrayList;
 import java.util.Random;
 public class TableroLogica {
-   Ficha[][] fichas= new Ficha[10][10];
+   public Ficha[][] fichas= new Ficha[10][10];
    private Random rand = new Random();
    ArrayList <String> malos =new ArrayList<>();
    ArrayList <String> buenos =new ArrayList<>();
    
    
-   boolean colocarFichas(){
+   void imprimirTablero(){
+       colocarFichas();
+       System.out.println("Fichas");
+       for(int f=0;f<4;f++){
+           for(int c=0;c<10;c++){
+            System.out.print(fichas[f][c].nombre+"-");
+           }
+           System.out.println("");
+       }
+      
+    System.out.println("Fichas");
+       for(int f=6;f<10;f++){
+        for(int c=0;c<10;c++){
+             System.out.print(fichas[f][c].nombre+"-");
+          }
+          System.out.println("");
+      }
+       
+  
+   
+   }
+   
+   
+   public boolean colocarFichas(){
         colocarTierra();
         ColocarBombasRestantesBuenos();
         ColocarBombasRestantesMalos();
@@ -69,9 +92,14 @@ public class TableroLogica {
        if(ContarElementos("Bomba",malos)<6){
            if(fichas[f][c]==null){
           fichas[f][c]=new Bomba("malo");
+          malos.add("Bomba");
+          if(ContarElementos("Bomba",malos)<6){
+             ColocarBombasRestantesMalos();
+          }
           }
            else{ColocarBombasRestantesMalos();}
        } 
+        
    }
    
     void ColocarBombasRestantesBuenos(){
@@ -80,10 +108,15 @@ public class TableroLogica {
        int f= rand.nextInt(2)+8;
        if(ContarElementos("Bomba",buenos)<6){
            if(fichas[f][c]==null){
-                fichas[f][c]=new Bomba("malo");
+                fichas[f][c]=new Bomba("bueno");
+                buenos.add("Bomba");
             }
-           else{ColocarBombasRestantesMalos();}
+           if(ContarElementos("Bomba",buenos)<6){
+               ColocarBombasRestantesBuenos();
+           }
+           else{ColocarBombasRestantesBuenos();}
        } 
+       
    }
       
       
@@ -126,7 +159,7 @@ public class TableroLogica {
     void ColocarRango9Buenos(){  
           int c= rand.nextInt(10);
           int f= 6;
-          if(buenos.contains("Captain America")){
+          if(buenos.contains("Capitan America")){
           
               return;
           
@@ -135,7 +168,7 @@ public class TableroLogica {
           
               if(fichas[f][c]==null){
                   fichas[f][c]=new Rango9("bueno");
-                  buenos.add("Captain America");
+                  buenos.add("Capitan America");
               }
              else{
                   ColocarRango9Buenos();
@@ -210,15 +243,15 @@ public class TableroLogica {
                 fil=7;
             int col= rand.nextInt(10);
            String nombre=nombreRango2Buenos();
-            if(nombre!=null){
-                if(fichas[fil][col]==null){
+            if(nombre==null){
+                return;
+            }
+            if(fichas[fil][col]==null){
                 fichas[fil][col]= new Rango2("bueno",nombre);
                 buenos.add(nombre);
-                    return;
-               }
             }
-          
             rellenarRango2Buenos();
+          
     }
     
     public String nombreRango2Buenos(){
@@ -236,49 +269,50 @@ public class TableroLogica {
             return "elektra";
         if(buenos.contains("nightcrawler")==false)
             return "nightcrawler";
-        
+        if(buenos.contains("dr.strange")==false)
+            return "dr.strange";
         return null;
     }
     
     public String nombreRango2Malos(){
-        if(buenos.contains("Electro")==false)
+        if(malos.contains("Electro")==false)
             return "Electro";
-        if(buenos.contains("Sentinel")==false)
+        if(malos.contains("Sentinel")==false)
             return "Sentinel";
-        if(buenos.contains("Viper")==false)
+        if(malos.contains("Viper")==false)
             return "Viper";
-        if(buenos.contains("sandman")==false)
+        if(malos.contains("sandman")==false)
             return "sandman";
-         if(buenos.contains("ultron")==false)
+         if(malos.contains("ultron")==false)
             return "ultron";
-        if(buenos.contains("Sentinel 2")==false)
+        if(malos.contains("Sentinel 2")==false)
             return "Sentinel 2";
-        if(buenos.contains("mr.sinester")==false)
+        if(malos.contains("mr.sinester")==false)
             return "mr.sinester";
-        if(buenos.contains("leader")==false)
+        if(malos.contains("leader")==false)
             return "leader";
         
         return null;
     }
     
     public void rellenarRango2Malos(){
-      boolean random= rand.nextBoolean();
+        boolean random= rand.nextBoolean();
             int fil;
             if(random)
                 fil=3;
             else
                 fil=2;
-            int col= rand.nextInt(10);
+           int col= rand.nextInt(10);
            String nombre=nombreRango2Malos();
-            if(nombre!=null){
-                if(fichas[fil][col]==null){
-                fichas[fil][col]= new Rango2("bueno",nombre);
-                buenos.add(nombre);
-                    return;
-               }
+            if(nombre==null){
+                return;
             }
-          
-            rellenarRango2Malos();
+            if(fichas[fil][col]==null){
+                fichas[fil][col]= new Rango2("malo",nombre);
+                malos.add(nombre);
+             }
+                rellenarRango2Malos();
+
     }
     
     
@@ -362,7 +396,7 @@ public class TableroLogica {
             String nombre=nombreRango4Malos();
             if(nombre!=null){
                fichas[fila][col]=new Rango4(caracteristica,nombre);
-               buenos.add(nombre);
+               malos.add(nombre);
                return true; 
             }
         }
@@ -371,12 +405,12 @@ public class TableroLogica {
     public String nombreRango4Buenos(){
         if(buenos.contains("Punisher")==false)
             return "Punisher";
-        if(buenos.contains("Blade")==false)
+       if(buenos.contains("Blade")==false)
             return "Blade";
         if(buenos.contains("Thing")==false)
             return "Thing";
-        if(buenos.contains("Thing")==false)
-            return "Thing";
+        if(buenos.contains("ghost rider")==false)
+            return "ghost rider";
         return null;
     }
     public String nombreRango4Malos(){
@@ -406,7 +440,7 @@ public class TableroLogica {
             String nombre=nombreRango5Malos();
             if(nombre!=null){
                fichas[fila][col]=new Rango5(caracteristica,nombre);
-               buenos.add(nombre);
+               malos.add(nombre);
                return true; 
             }
         }
@@ -450,7 +484,7 @@ public class TableroLogica {
             String nombre=nombreRango6Malos();
             if(nombre!=null){
                fichas[fila][col]=new Rango6(caracteristica,nombre);
-               buenos.add(nombre);
+               malos.add(nombre);
                return true; 
             }
         }
@@ -494,7 +528,7 @@ public class TableroLogica {
             String nombre=nombreRango7Malos();
             if(nombre!=null){
                fichas[fila][col]=new Rango7(caracteristica,nombre);
-               buenos.add(nombre);
+               malos.add(nombre);
                return true; 
             }
         }
@@ -536,7 +570,7 @@ public class TableroLogica {
             String nombre=nombreRango8Malos();
             if(nombre!=null){
                fichas[fila][col]=new Rango8(caracteristica,nombre);
-               buenos.add(nombre);
+               malos.add(nombre);
                return true; 
             }
         }
@@ -553,11 +587,8 @@ public class TableroLogica {
     public String nombreRango8Malos(){
       if(malos.contains("kingpin")==false)
             return "kingpin";
-        if(malos.contains("magneto")==false)
+      if(malos.contains("magneto")==false)
             return "magneto";
-       
-        
-        
         return null;
     }
         
@@ -565,7 +596,7 @@ public class TableroLogica {
        
         //buenos
         for(int fila=6; fila< fichas.length;fila++){
-            for(int col=0;col<fichas[0].length;col++){
+            for(int col=0;col<10;col++){
             
                 if(fichas[fila][col]==null){
                     randomFicha(fila,col,"bueno");}
@@ -575,7 +606,7 @@ public class TableroLogica {
         
         //malos
          for(int fila=0; fila< 4;fila++){
-            for(int col=0;col<fichas[0].length;col++){
+            for(int col=0;col<10;col++){
             
                 if(fichas[fila][col]==null){
                     randomFicha(fila,col,"malo");}
