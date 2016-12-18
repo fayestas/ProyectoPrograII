@@ -241,12 +241,12 @@ class MoverPieza implements ActionListener{
             int c1=parseColumna(coor1);
             int c2=parseColumna(coor2);
             if(Board.bbuenos){
-                if(Board.tab.fichas[f1][c1].Tipo.equals("malo")){
+                if(Board.tab.fichas[f1][c1]!=null&&Board.tab.fichas[f1][c1].Tipo.equals("malo")){
                     return false;
                 }
             }
             if(Board.bmalos){
-                if(Board.tab.fichas[f1][c1].Tipo.equals("bueno")){
+                if(Board.tab.fichas[f1][c1]!=null&&Board.tab.fichas[f1][c1].Tipo.equals("bueno")){
                     return false;
                 }
             }
@@ -267,7 +267,7 @@ class MoverPieza implements ActionListener{
             }
             else{
                  String pieza="";
-                if(Board.tab.fichas[f1][c1].Tipo.equals(Board.tab.fichas[f2][c2].Tipo)){
+                if(Board.tab.fichas[f1][c1]==null||Board.tab.fichas[f1][c1].Tipo.equals(Board.tab.fichas[f2][c2].Tipo)){
                     return false;
                 }
                 if(Board.tab.fichas[f1][c1].Rango==Board.tab.fichas[f2][c2].Rango){
