@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica;
+package proyecto;
 
 /**
  *
- * @author Frances
+ * @author miriam trochez
  */
-public class Rango9 extends Ficha {
-
-    public Rango9(String t) {
-        super(9, t,(t.equals("malo")?"Galactus":"Capitan America"));
+public class Testt
+{
+    public static void main(String[] args)
+    {
+        Board ele = new Board();
+        ele.setVisible(true);
     }
     
 }

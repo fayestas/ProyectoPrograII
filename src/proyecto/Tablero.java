@@ -164,7 +164,7 @@ public class Tablero extends javax.swing.JFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nova_blast.jpg"))); // NOI18N
         jButton6.setText("jButton6");
         getContentPane().add(jButton6);
-        jButton6.setBounds(477, 50, 70, 70);
+        jButton6.setBounds(480, 50, 70, 70);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nova_blast.jpg"))); // NOI18N
         jButton7.setText("jButton7");
@@ -325,6 +325,11 @@ public class Tablero extends javax.swing.JFrame {
 
         jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Evils.png"))); // NOI18N
         jButton37.setText("jButton37");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton37);
         jButton37.setBounds(330, 120, 70, 70);
 
@@ -621,6 +626,10 @@ public class Tablero extends javax.swing.JFrame {
         mp.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel2KeyPressed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton37ActionPerformed
 
     /**
      * @param args the command line arguments

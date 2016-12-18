@@ -10,9 +10,9 @@ package logica;
  * @author Frances
  */
 public abstract class Ficha {
-    int Rango;
-    String Tipo;
-    String nombre;
+    public int Rango;
+    public String Tipo;
+    public String nombre;
 
     public Ficha(int Rango, String Tipo, String nombre) {
         this.Rango = Rango;

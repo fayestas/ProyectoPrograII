@@ -9,10 +9,12 @@ package logica;
  *
  * @author Frances
  */
-public class Rango9 extends Ficha {
-
-    public Rango9(String t) {
-        super(9, t,(t.equals("malo")?"Galactus":"Capitan America"));
+public class testfichas {
+    
+    public static void main(String[] args){
+        TableroLogica tab= new TableroLogica();
+        tab.imprimirTablero();
+    
     }
     
 }
