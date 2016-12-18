@@ -5,58 +5,55 @@
  */
 package proyecto;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jorge A. Santos
  */
-public class Player{
-    ArrayList<String> usuarios = new ArrayList <> ();
-    CrearPlayer cp;
-    Login lg;
-   
-    public String addPlayer(){
-        return addPlayer(cp.usuario,0);
-    }
-
-    private String addPlayer(String usuario, int pos) {
-        for(String us: usuarios){
-            if(us!=null && !usuarios.contains(cp.usuario)){
-                try{
-                    usuarios.add(new String(cp.usuario));
-                }catch(InputMismatchException e){
-                    JOptionPane.showMessageDialog(null, "El usuario no puedo ser registrado");
-                }
-            }
+public class Player {
+    int cont =0;
+    
+    public boolean addPlayer(String user, String pass){
+        try{
+          ObjectOutputStream crear = new ObjectOutputStream(new FileOutputStream(user));  
+          crear.writeObject(user);
+          crear.writeObject(pass);
+          cont++;
+          JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
+          return true;
+        }catch(IOException e){
+            System.out.println("Error: "+e);
+            return false;
         }
-//        if(pos < usuarios.size()){
-//            CrearPlayer c = usuarios.get(pos);
-//            if(c.equals(usuario))
-//                return c;
-//            return search(usuario, pos+1);
-//        }
-     return null;
     }
     
-//    public void addPlayer(){
-//            if(search()!=null){
-//            usuarios.add(new String(cp.usuario));
-//            }
-//                    
-//    }
     
     
-    public void login(){
-        for(String cP : usuarios){
-            if(usuarios.contains(lg.user)){
-                MenuPrincipal mp = new MenuPrincipal();
-                mp.setVisible(true);
+    public boolean look(String user, String pass) {
+        try{
+            ObjectInputStream login = new ObjectInputStream(new FileInputStream(user));  
+            Object us =login.readObject();
+            Object ps =login.readObject();
+            
+            if(user.equalsIgnoreCase(us.toString()) && pass.equalsIgnoreCase(ps.toString())){
+                    cont++;
+                    return true;   
             }else{
-                JOptionPane.showMessageDialog(null, "El usuario o la contraseña es incorrecta");
+                JOptionPane.showMessageDialog(null,"El Usuario o la contraseña son erroneas");   
             }
-        }
+        }catch(IOException e){
+            e.getMessage();
+        }catch(ClassNotFoundException e){
+            e.getMessage();
+         }
+        return false;
     }
+    
+ 
 }

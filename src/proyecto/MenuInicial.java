@@ -97,7 +97,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
-        CrearPlayer p = new CrearPlayer("Crear");
+        CrearPlayer p = new CrearPlayer();
         p.setVisible(true);
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -126,6 +126,9 @@ public class MenuInicial extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

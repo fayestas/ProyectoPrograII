@@ -164,7 +164,7 @@ public class Tablero extends javax.swing.JFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nova_blast.jpg"))); // NOI18N
         jButton6.setText("jButton6");
         getContentPane().add(jButton6);
-        jButton6.setBounds(477, 50, 70, 70);
+        jButton6.setBounds(480, 50, 70, 70);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nova_blast.jpg"))); // NOI18N
         jButton7.setText("jButton7");
@@ -325,6 +325,11 @@ public class Tablero extends javax.swing.JFrame {
 
         jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Evils.png"))); // NOI18N
         jButton37.setText("jButton37");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton37);
         jButton37.setBounds(330, 120, 70, 70);
 
@@ -591,19 +596,14 @@ public class Tablero extends javax.swing.JFrame {
         getContentPane().add(jButton101);
         jButton101.setBounds(696, 680, 70, 70);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Salir.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
+        jLabel2.setText("jLabel2");
         jLabel2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jLabel2KeyPressed(evt);
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(800, 680, 70, 70);
+        jLabel2.setBounds(800, 470, 60, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Wallpaper-Stratego.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -621,15 +621,15 @@ public class Tablero extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
-
+        // TODO add your handling code here:
         MenuPrincipal  mp = new MenuPrincipal();
         mp.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel2KeyPressed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton37ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,6 +656,9 @@ public class Tablero extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Tablero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
