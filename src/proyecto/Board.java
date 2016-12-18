@@ -207,6 +207,25 @@ class MoverPieza implements ActionListener{
    }
    return Integer.parseInt(coor);
    }
+
+   boolean winBuenos(){
+       for(int c=0;c<10;c++){
+           if(Board.tab.fichas[0][c].Rango==0){
+               return false;
+           }
+       }
+       return true;
+   
+   }
+   
+   boolean winMalos(){
+       for(int c=0;c<10;c++){
+           if(Board.tab.fichas[9][c].Rango==0){
+               return false;
+           }
+       }
+       return true;
+   }
    
    
    
@@ -247,19 +266,21 @@ class MoverPieza implements ActionListener{
                 return false;
             }
             else{
-                
+                 String pieza="";
                 if(Board.tab.fichas[f1][c1].Tipo.equals(Board.tab.fichas[f2][c2].Tipo)){
                     return false;
                 }
                 if(Board.tab.fichas[f1][c1].Rango==Board.tab.fichas[f2][c2].Rango){
+                       pieza=Board.tab.fichas[f1][c1].nombre+" y "+Board.tab.fichas[f2][c2];
                        Board.tab.fichas[f1][c1]=null;
                        Board.tab.fichas[f2][c2]=null;
                        a.setIcon(null);
                        b.setIcon(null);
+                       JOptionPane.showMessageDialog(null,"Pieza  Comida "+pieza);
                        return true;
                 }
                 int[] pos=comerValido(Board.tab.fichas[f1][c1],Board.tab.fichas[f2][c2],f1,c1,f2,c2);
-                
+                pieza=Board.tab.fichas[pos[0]][pos[1]].nombre;
                 Board.tab.fichas[pos[0]][pos[1]]=null;
                 
                 if(pos[0]==f1){
@@ -269,7 +290,7 @@ class MoverPieza implements ActionListener{
                     b.setIcon(null);
                 }
                 
-                JOptionPane.showMessageDialog(null,"Pieza  Comida");
+                JOptionPane.showMessageDialog(null,"Pieza  Comida"+pieza);
             }
         }
         else{
@@ -300,6 +321,18 @@ class MoverPieza implements ActionListener{
                      Board.bbuenos=true;
                    
                    }
+               }
+               
+               if(winBuenos()){
+                   Board.bbuenos=false;
+                   Board.bmalos=false;
+                   JOptionPane.showMessageDialog(null,"Heroes wins");
+               }
+               
+               if(winMalos()){
+                   Board.bbuenos=false;
+                   Board.bmalos=false;
+                   JOptionPane.showMessageDialog(null,"Villians wins");
                }
            }
 
