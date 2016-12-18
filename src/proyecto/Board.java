@@ -34,7 +34,8 @@ import logica.TableroLogica;
 public class Board extends JFrame implements ActionListener
 {
     public static TableroLogica tab=new TableroLogica();
-    
+    public static boolean bbuenos=true;
+    public static boolean bmalos=false;
     Container contenedor;
     public Board(){
          contenedor=getContentPane();
@@ -138,9 +139,9 @@ class MoverPieza implements ActionListener{
   boolean movimientoValido(logica.Ficha inicial, logica.Ficha destino, int f1 , int c1 ,int f2, int c2  ){
   if(inicial instanceof logica.Rango2 && destino==null&&(f2==f1||c2==c1+1))
       return true;
-  if(f2==f1+1&& c1==c2)
+  if((f2==f1+1&& c1==c2)||(f2==f1-1&& c1==c2))
       return true;
-  if(f2==f1&&c2==c1+1)
+  if((f2==f1&&c2==c1+1)||(f2==f1&&c2==c1-1))
       return true;
   return false;
   }
@@ -220,7 +221,16 @@ class MoverPieza implements ActionListener{
             int f2=parseFila(coor2);
             int c1=parseColumna(coor1);
             int c2=parseColumna(coor2);
-            
+            if(Board.bbuenos){
+                if(Board.tab.fichas[f1][c1].Tipo.equals("malo")){
+                    return false;
+                }
+            }
+            if(Board.bmalos){
+                if(Board.tab.fichas[f1][c1].Tipo.equals("bueno")){
+                    return false;
+                }
+            }
             if(b.getIcon()==null){
 
                 if(movimientoValido(Board.tab.fichas[f1][c1],Board.tab.fichas[f2][c2],f1,c1,f2,c2)){
@@ -274,7 +284,20 @@ class MoverPieza implements ActionListener{
         else {
         // second button, so do the 'move'
             JButton secondButton = (JButton)e.getSource();
-           doMove(clickedButton,secondButton);
+           if(doMove(clickedButton,secondButton)){
+           
+               if(Board.bbuenos){
+                   Board.bbuenos=false;
+                   Board.bmalos=true;
+               }
+               else{
+                   if(Board.bmalos){
+                     Board.bmalos=false;
+                     Board.bbuenos=true;
+                   
+                   }
+               }
+           }
 
         // clear the clickedButton so that we know the next click is a first click
            clickedButton = null;
