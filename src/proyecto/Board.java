@@ -247,6 +247,10 @@ class MoverPieza implements ActionListener{
                 return false;
             }
             else{
+                
+                if(Board.tab.fichas[f1][c1].Tipo.equals(Board.tab.fichas[f2][c2].Tipo)){
+                    return false;
+                }
                 if(Board.tab.fichas[f1][c1].Rango==Board.tab.fichas[f2][c2].Rango){
                        Board.tab.fichas[f1][c1]=null;
                        Board.tab.fichas[f2][c2]=null;
